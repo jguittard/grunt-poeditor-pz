@@ -179,6 +179,10 @@ function downloadExports(exports, data, handler) {
 }
 
 function downloadExport(url, path, handler) {
+	var writeStream = fs.createWriteStream(path, {
+		flags: 'w'
+	});
+	writeStream.write('');
 	
 	wget.download(url, path)
 		.on('end', function(output) {
